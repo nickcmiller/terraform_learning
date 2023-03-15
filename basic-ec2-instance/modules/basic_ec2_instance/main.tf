@@ -1,12 +1,4 @@
-variable "security_group_id" {
-  description = "The ID of the security group"
-  type        = string
-}
-
-variable "key_pair_name" {
-  description = "The name of the key pair"
-  type        = string
-}
+# -- basic_ec2_instance/main.tf
 
 data "aws_ami" "amazon_linux_2" {
   most_recent = true
@@ -29,9 +21,4 @@ resource "aws_instance" "basic_ec2_instance" {
   tags = {
     Name = "basic_ec2_instance"
   }
-}
-
-output "public_ip" {
-  value       = aws_instance.basic_ec2_instance.public_ip
-  description = "The public IP of the basic_ec2_instance"
 }

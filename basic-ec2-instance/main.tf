@@ -1,10 +1,7 @@
+#  -- root/main.tf
+
 data "http" "my_ip" {
   url = "https://ipv4.icanhazip.com"
-}
-
-variable "my_ip_address" {
-  description = "Your current IP address"
-  type        = string
 }
 
 locals {

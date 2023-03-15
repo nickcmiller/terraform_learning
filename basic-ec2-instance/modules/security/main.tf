@@ -1,7 +1,4 @@
-variable "my_ip_address" {
-  description = "Your current IP address"
-  type        = string
-}
+# -- security/main.tf
 
 resource "aws_key_pair" "my_key_pair" {
   key_name   = "my_key_pair"
@@ -48,17 +45,4 @@ resource "null_resource" "chmod_private_key" {
   provisioner "local-exec" {
     command = "chmod 400 ${local_file.private_key.filename}"
   }
-}
-
-output "security_group_id" {
-  value = aws_security_group.my_security_group.id
-}
-
-output "key_pair_name" {
-  value = aws_key_pair.my_key_pair.key_name
-}
-
-output "private_key_file" {
-  value       = local_file.private_key.filename
-  description = "The path to the private key file"
 }
